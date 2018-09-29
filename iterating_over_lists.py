@@ -16,5 +16,7 @@ print()
 
 
 for user in company:
-    if user
-        print(user['name'])
+#    print("User: ", user['name'],'\n',"  User is admin? ", user['admin'],'\n',"  Account is active? ", user['active'])
+    print(user['name'])
+    if user['admin'] == True:
+        print('(ADMIN)')
