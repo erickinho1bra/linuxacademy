@@ -1,14 +1,9 @@
 #!/usr/bin/env python3.6
 
-import math
+from math import pi
+from os import getenv
 
-pi = math.pi
-floaty = input("What decimal place would you like to take pi to? ").strip()
+digits = int(getenv("DIGITS") or 10)
 
-if floaty:
-    floaty = int(floaty)
-else:
-    floaty = 30
-
-print(round(pi, floaty))
+print(round(pi, digits))
 #print("%.*f" % (pi, floaty))
