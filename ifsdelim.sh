@@ -1,13 +1,14 @@
 #!/bin/bash
-# delimiter example using IFS
+# delimter example script
 
-read -p "Enter the filename you want to parse: " FILE
-read -p "Enter the Delimiter: " DELIM
+read -p "What file would you like to read? " FILE
+read -p "What delimiter would you like to use? " DELIM
 
 IFS="$DELIM"
 
-while read -r CPU MEMORY DISK; do
-  echo "CPU: $CPU"
-  echo "Memory: $MEMORY"
-  echo "Disk: $DISK"
-done <"$FILE"
+while read -r CPU MEMORY DISK;
+do
+  printf "CPU: $CPU \n"
+  printf "Memory: $MEMORY \n"
+  printf "Disk: $DISK \n"
+done < "$FILE"

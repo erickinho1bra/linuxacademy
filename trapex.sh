@@ -1,18 +1,17 @@
 #!/bin/bash
-# example of trapping events and limiting the shell stopping
+# script to demonstrate trap signals
 
 clear
 
-trap 'echo " - Please Press Q to Exit.."' SIGINT SIGTERM SIGTSTP
+trap 'echo " - Please Typte Q to Exit"' SIGTERM SIGINT
 
-while [ "$CHOICE" != "Q" ] && [ "$CHOICE" != "q" ]; do
-  echo "MAIN MENU"
-  echo "========"
-  echo "1) Choice One"
-  echo "2) Chose Two"
-  echo "Q) Quit/Exit"
-  echo ""
-  read CHOICE
-
+while [ "$CHOICE" != "Q" ] && [ "$CHOICE" != "q" ] ; do
   clear
+  echo "Main Menu"
+  echo "====="
+  echo "1) Choice One"
+  echo "2) Choce Two"
+  echo "Q) Quit"
+  echo
+  read CHOICE
 done
