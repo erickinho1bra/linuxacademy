@@ -11,7 +11,6 @@ else
   echo "Using default commit message: $COMMESS"
 fi
 
-set -x
 git commit -m "$COMMESS"
 COMSTATUS=`echo $?`
 if [ "$COMSTATUS" == "1" ] ; then
@@ -22,4 +21,3 @@ else
   git commit -m "$COMMESS"
   git push origin master
 fi
-set +x
