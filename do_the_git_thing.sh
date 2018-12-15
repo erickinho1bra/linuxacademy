@@ -11,7 +11,7 @@ else
   echo "Using default commit message: $COMMESS"
 fi
 
-if [ `git commit -m "$COMMESS"` == "nothing to commit, working directory clean" ] ; then
+if [ "`git commit -m "$COMMESS"`" == "nothing to commit, working directory clean" ] ; then
   echo "Nothing to commit!"
   exit 1
 else
