@@ -11,5 +11,12 @@ else
   echo "Using default commit message: $COMMESS"
 fi
 
-git commit -m "$COMMESS"
-git push origin master
+if [ `git commit -m $COMMESS` == "" ] ; then
+  echo "Nothing to commit!"
+  exit 1
+else
+  echo "Committing files (not sins)"
+  git commit -m "$COMMESS"
+  git push origin master
+fi
+
