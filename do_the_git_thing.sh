@@ -11,6 +11,7 @@ else
   echo "Using default commit message: $COMMESS"
 fi
 
+set -x
 if [ "`git commit -m "$COMMESS" ; echo $?`" == "1" ] ; then
   echo "Nothing to commit!"
   exit 1
@@ -19,4 +20,4 @@ else
   git commit -m "$COMMESS"
   git push origin master
 fi
-
+set +x
