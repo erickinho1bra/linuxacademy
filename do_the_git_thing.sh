@@ -12,7 +12,9 @@ else
 fi
 
 set -x
-if [ "`git commit -m "$COMMESS" ; echo $?`" == "1" ] ; then
+git commit -m "$COMMESS"
+COMSTATUS=`echo $?`
+if [ "$COMSTATUS" == "1" ] ; then
   echo "Nothing to commit!"
   exit 1
 else
