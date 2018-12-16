@@ -11,7 +11,7 @@ else
 fi
 
 # Commit changes (if any)
-git commit -a -m "$COMMESS" 2>/dev/null
+git commit -a -m "$COMMESS" 1>/dev/null
 
 # Record exit code
 COMSTATUS=`echo $?`
