@@ -30,7 +30,7 @@ if [ "$COMSTATUS" == "1" ] ; then
   done
 else
   echo "Committing files (not sins)"
-  git commit -a -m "$COMMESS"
+  git commit -a -m "$COMMESS" 2>/dev/null
   git push origin master
 fi
 
