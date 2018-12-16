@@ -19,7 +19,15 @@ COMSTATUS=`echo $?`
 # Commit depending on whether there are changes to the repository
 if [ "$COMSTATUS" == "1" ] ; then
   echo "Nothing to commit!"
-  exit 1
+  while [ "$COMDECISION" == "" ] ; do
+    read -p "would you like to force a commit? (Y or N)" COMDECISION
+    if [ "$COMDECISION" == "Y" ] || [ "$COMDECISION" == "y" ] ; then
+      echo "Forcing commit"
+    elif [ "$COMDECISION" == "N" ] || [ "$COMDECISION" == "n" ] ; then
+      echo "Not forcing commit"
+      exit 1
+    fi
+  done
 else
   echo "Committing files (not sins)"
   git commit -a -m "$COMMESS"
