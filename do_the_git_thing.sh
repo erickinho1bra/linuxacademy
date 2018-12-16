@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Variable definition - start
+
+funcComAndPush () {
+  git commit -a -m "$COMMESS" 1>/dev/null
+  git push origin master
+}
+
+# Variable definitions - stop
+
 read -p "What do you want your commit message to be? " COMMESS
 
 # Prompt user for git commit message
@@ -23,6 +32,7 @@ if [ "$COMSTATUS" == "1" ] ; then
     read -p "would you like to force a commit? (Y or N)" COMDECISION
     if [ "$COMDECISION" == "Y" ] || [ "$COMDECISION" == "y" ] ; then
       echo "Forcing commit"
+      funcComAndPush
     elif [ "$COMDECISION" == "N" ] || [ "$COMDECISION" == "n" ] ; then
       echo "Not forcing commit"
       exit 1
@@ -30,8 +40,5 @@ if [ "$COMSTATUS" == "1" ] ; then
   done
 else
   echo "Committing files (not sins)"
-  git commit -a -m "$COMMESS" 1>/dev/null
-  git push origin master
+  funcComAndPush
 fi
-
-echo hi
