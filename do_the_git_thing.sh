@@ -25,3 +25,5 @@ else
   git commit -a -m "$COMMESS"
   git push origin master
 fi
+
+echo hi
