@@ -29,7 +29,7 @@ COMSTATUS=`echo $?`
 if [ "$COMSTATUS" == "1" ] ; then
   echo "Nothing to commit!"
   while [ "$COMDECISION" == "" ] ; do
-    read -p "would you like to force a commit? (Y or N)" COMDECISION
+    read -p "would you like to force a commit? (Y or N) " COMDECISION
     if [ "$COMDECISION" == "Y" ] || [ "$COMDECISION" == "y" ] ; then
       echo "Forcing commit"
       funcComAndPush
