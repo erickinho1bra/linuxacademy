@@ -12,6 +12,10 @@ funcComAndPush () {
 
 
 ##### Script - start
+
+# Stage changes you want to commit
+git add .
+
 read -p "What do you want your commit message to be? " COMMESS
 
 # Prompt user for git commit message
