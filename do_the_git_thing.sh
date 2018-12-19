@@ -1,14 +1,17 @@
 #!/bin/bash
 
-# Variable definition - start
+##### Variable definition - start
 
+# function to commit changes and push to master git branch
 funcComAndPush () {
   git commit -a -m "$COMMESS" 1>/dev/null
   git push origin master
 }
 
-# Variable definitions - stop
+##### Variable definitions - stop
 
+
+##### Script - start
 read -p "What do you want your commit message to be? " COMMESS
 
 # Prompt user for git commit message
