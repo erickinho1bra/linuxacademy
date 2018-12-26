@@ -3,6 +3,8 @@
 
 ##### function declerations - start
 
+# function to check if the file the user want to format is a new file or is an existing file, if not existing, it creates the file
+# sets "exit status" to be used later
 funcCheckFileExists () {
 if [ -f $FILE_TO_FORM ] ; then
   echo "File \"$FILE_TO_FORM\" exists!"
@@ -14,6 +16,7 @@ else
 fi
 }
 
+# function to check what content is in the file and display it to the user if they want to see it
 funcCheckFileContent () {
   FILE_LINES=`wc -l "$FILE_TO_FORM"`
 
@@ -29,6 +32,7 @@ funcCheckFileContent () {
 
 }
 
+#function to check if user wants to format file, then format it and make the file executable
 funcFormatFile () {
   read -p "Would you like to format the script? (Answer y or n) " FORMAT_RESPONSE
   if [ "$FORMAT_RESPONSE" = "y" ] ; then
@@ -38,6 +42,13 @@ funcFormatFile () {
   elif [ "$FORMAT_RESPONSE" == "n"] ; then
     echo "NOT formatting script!"
   fi
+}
+
+# function to vim into the newly formatted file
+funcVimFileToFormat () {
+  echo "Vimming newly formatted file now!"
+  sleep 2
+  vim $FILE_TO_FORM
 }
 
 ##### function declerations - stop
@@ -56,6 +67,7 @@ elif [ "$fCheck_File_Exists_Status" == "file_created" ] ; then
   echo "Created $FILE_TO_FORM"
   # call function that sees if they want to format the file and then formats it
   funcFormatFile
+  funcVimFileToFormat
 fi
 
 ##### script - stop
