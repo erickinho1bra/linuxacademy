@@ -3,7 +3,7 @@
 
 clear
 
-trap 'echo " - Please Typte Q to Exit"' SIGTERM SIGINT
+trap 'echo " - Please Type Q to Exit"' SIGTERM SIGINT
 
 while [ "$CHOICE" != "Q" ] && [ "$CHOICE" != "q" ] ; do
   clear
