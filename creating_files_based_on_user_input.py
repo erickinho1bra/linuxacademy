@@ -1,10 +1,10 @@
-#!/usr/bin/env python3.6
+#!/usr/bin/env python3.7
 
 import os, sys
 
 newFile = input("What do you want to call your new file (e.g. cars.txt)? ")
 
-message = " "
+message = ""
 
 while message != "":
     message = input('Give me da message: ')
