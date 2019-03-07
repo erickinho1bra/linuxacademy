@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #!/usr/bin/env python3.7
 # This is a script to take in a port number, see if it is running, then if it is, it will kill it but if it is not running then it'll do nothing.
 
@@ -19,7 +19,7 @@ port = parser.parse_args().port
 ##### global variables - start
 
 
->>>>>>> e9ce1554c7cb8ee68498265c8f28104c05af85a3
+
 
 ##### global variable - stop
 
@@ -28,17 +28,17 @@ port = parser.parse_args().port
 ##### function declerations - start
 
 
-<<<<<<< HEAD
+
 =======
 
->>>>>>> e9ce1554c7cb8ee68498265c8f28104c05af85a3
+
 ##### function declerations - stop
 
 
 
 ##### script - start
 
-<<<<<<< HEAD
+
 try:
     result = subprocess.run(
         ['lsof', '-n', '-i4TCP:%s' % port],
@@ -64,7 +64,7 @@ else:
         print(f"No process listening on port {port}")
         exit(6)
 =======
->>>>>>> e9ce1554c7cb8ee68498265c8f28104c05af85a3
+
 
 
 ##### script - stop
