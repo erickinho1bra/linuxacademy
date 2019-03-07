@@ -1,0 +1,25 @@
+---
+- hosts: dev
+  become: yes
+  remote_user: ec2-user
+  tasks:
+    - name:  Configure SELinux to allow http to connect to network
+      command: setsebool -P httpd_can_network_connect_db=1
+    - name: Install pip so you can install AWS cli
+      get_url:
+        url: https://bootstrap.pypa.io/get-pip.py
+        dest: /root/get-pip.py
+    - name: Install pip
+      shell: python get-pip.py --user
+      args:
+        chdir: /root
+      #- name: Export PATH
+      #command: PATH=/root/.local/bin:$PATH
+      #- name: Source bash_profile
+      #command: source ~/.bash_profile
+    - name: Check pip version
+      command: pip --version
+    - name: Install AWS cli on server
+      command: pip install awscli --upgrade --user
+    - name: Check AWS version
+      command: aws --version
