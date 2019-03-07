@@ -3,7 +3,11 @@
 
 clear
 
+<<<<<<< HEAD
 trap 'echo " - Please Typte Q to Exit"' SIGTERM SIGINT
+=======
+trap 'echo " - Please Type Q to Exit"' SIGTERM SIGINT
+>>>>>>> e9ce1554c7cb8ee68498265c8f28104c05af85a3
 
 while [ "$CHOICE" != "Q" ] && [ "$CHOICE" != "q" ] ; do
   clear

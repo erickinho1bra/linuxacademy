@@ -1,0 +1,21 @@
+{
+    "Location": "https://route53.amazonaws.com/2013-04-01/delegationset/NLTI9K9LVEK6O", 
+    "DelegationSet": {
+        "NameServers": [
+            "ns-857.awsdns-43.net", 
+            "ns-1214.awsdns-23.org", 
+            "ns-1784.awsdns-31.co.uk", 
+            "ns-268.awsdns-33.com"
+        ], 
+        "CallerReference": "1224", 
+        "Id": "/delegationset/NLTI9K9LVEK6O"
+    }
+}
+
+
+Original Name Servers
+
+ns-322.awsdns-40.com
+ns-623.awsdns-13.net
+ns-1414.awsdns-48.org
+ns-1806.awsdns-33.co.uk
