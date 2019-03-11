@@ -15,7 +15,7 @@ smtpObj = smtplib.SMTP('smtp.gmail.com', 587)
 # default variable for sender and recipient email address
 defaultSenderEmailAddress = "erickdalima@gmail.com"
 defaultRecipientEmailAddress = "erickdalima@gmail.com"
-defaultEmailSubject = "Test"
+defaultEmailSubject = "Test" + "\n"
 defaultEmailBody = "This is a test"
 
 # function that handles CTRL+C 
@@ -69,15 +69,24 @@ recipientEmailAddress = input("Who do you want to email? (Default: erickdalima@g
 if recipientEmailAddress == "":
     recipientEmailAddress = f"{defaultRecipientEmailAddress}"
 
-emailSubject = input("What is the subject of your email? (Default: idk) ") + "\n"
-#if emailSubject == "":
-#    emailSubject = "WTH?"
+emailSubject = input("What is the subject of your email? (Default: Test) ") + "\n"
+if emailSubject == "\n":
+    emailSubject = f"{defaultEmailSubject}"
 
 emailBody = input("What is the body of your email? (Default: This is a test) ")
 if emailBody == "":
     emailBody = f"{defaultEmailBody}"
 
 trueEmail = "Subject: "f'{emailSubject}'"\n "f'{emailBody}'""
+
+emailCopiesResponse = input("Do you want to send multiple copies of this email to be a little troll? Please answer y or n (Default: n) ")
+while True:
+    if emailCopiesResponse == "y":
+        try:
+            emailCopies = int(input("How many times would you like to send this email?" ))
+            break
+        except ValueError as identifier:
+            print("You must enter a number!" )
 
 smtpObj.sendmail(f'{senderEmailAddress}', f'{recipientEmailAddress}', f'{trueEmail}')
 
