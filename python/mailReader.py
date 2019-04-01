@@ -45,7 +45,7 @@ def read_email_from_gmail():
         mail_ids = data[0]
 
         id_list = mail_ids.split()
-        first_email_id = int(id_list[0])
+        first_email_id = int(id_list[-2])
         latest_email_id = int(id_list[-1])
 
 
@@ -57,11 +57,8 @@ def read_email_from_gmail():
                     msg = email.message_from_string(response_part[1])
                     email_subject = msg['subject']
                     email_from = msg['from']
-                    email_body = msg['body']
                     print 'From : ' + email_from + '\n'
                     print 'Subject : ' + email_subject + '\n'
-                    print 'Body : ' + email_body + '\n'
-
     except Exception, e:
         print str(e)
 
