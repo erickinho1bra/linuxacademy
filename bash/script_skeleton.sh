@@ -37,7 +37,7 @@ funcFormatFile () {
   read -p "Would you like to format the script? (Answer y or n) " FORMAT_RESPONSE
   if [ "$FORMAT_RESPONSE" = "y" ] ; then
     echo "Formatting script!"
-    cat script_template.txt >> $FILE_TO_FORM
+    cat ../text/script_template.txt >> $FILE_TO_FORM
     chmod 777 $FILE_TO_FORM
   elif [ "$FORMAT_RESPONSE" == "n"] ; then
     echo "NOT formatting script!"
