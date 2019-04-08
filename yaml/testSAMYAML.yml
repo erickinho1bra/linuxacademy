@@ -4,6 +4,6 @@ Resources:
   MyFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      Handler:
+      Handler: newMailReader.main
       Runtime: Python3.7
-      Code: 's3://blue-pigeos/myProjects/python'
+      Code: 's3://blue-pigeos/myProjects/python/newMailReader.py'
