@@ -6,4 +6,4 @@ Resources:
     Properties:
       Handler: newMailReader.main
       Runtime: Python3.7
-      Code: 's3://blue-pigeos/myProjects/python/newMailReader.py'
+      Code: 's3://blue-pigeos/myProjects/python/zip/newMailReader.zip
