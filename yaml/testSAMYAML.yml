@@ -6,4 +6,24 @@ Resources:
     Properties:
       Handler: newMailReader.main
       Runtime: python3.6
-      CodeUri: s3://blue-pigeons/myProjects/python/zip/newMailReader.zip
+      CodeUri: s3://blue-pigeons/myProjects/python/newMailReader.zip
+      Events:
+        Stream:
+          Type: DynamoDB
+          Properties:
+            Stream: !GetAtt DynamoDBTable.StreamARN
+            BatchSize: 100
+            StartingPosition: TRIM_HORIZON
+
+  Alerts:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          AttributeType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
