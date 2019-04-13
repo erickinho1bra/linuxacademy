@@ -6,7 +6,8 @@ Resources:
     Properties:
       Handler: newMailReader.main
       Runtime: python3.6
-      CodeUri: s3://blue-pigeons/myProjects/python/newMailReader.zip
+      #CodeUri: s3://blue-pigeons/myProjects/python/newMailReader.zip
+      CodeUri:
       #Events:
       #  Stream:
       #    Type: DynamoDB
