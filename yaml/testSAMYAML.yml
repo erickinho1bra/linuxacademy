@@ -1,0 +1,80 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Resources:
+  IndividualRightsRequests:
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      AttributeDefinitions:
+        -
+          AttributeName: id
+          AttributeType: S
+#        -
+#          AttributeName: email 
+#          AttributeType: S
+#        -
+#          AttributeName: status 
+#          AttributeType: S
+#        -
+#          AttributeName: createTs 
+#          AttributeType: N
+#        -
+#          AttributeName: updateTs 
+#          AttributeType: N
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput: 
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+      GlobalSecondaryIndexes:
+        - IndexName: status-createTs-Index
+          KeySchema:
+            - 
+              AttributeName: status
+              KeyType: HASH
+            -  
+              AttributeName: createTs
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5            
+          IndexName: email-Index
+          KeySchema:
+            - AttributeName: email
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 5
+            WriteCapacityUnits: 5
+      SSESpecification:
+        SSEEnabled: true
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE
+  privacyRequestsLambda:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: newAge.ageTeller
+      Runtime: python3.6
+      CodeUri: s3://blue-pigeons/myProjects/python/zip/newAge.zip
+      Policies:
+      - Statement:
+        - Sid: AllAPIActionsOnIRRDB
+          Effect: Allow
+          Action:
+          - dynamodb:*
+          Resource: 'arn:aws:dynamodb:us-east-1:853478862516:table/ageStack-IndividualRightsRequests*'
+        - Sid: SSMGetParameterPolicy
+          Effect: Allow
+          Action:
+          - ssm:GetParameters
+          - ssm:GetParameter
+          Resource: '*'
+      Events:
+        HttpPost:
+          Type: Api
+          Properties:
+            Path: '/privacy'
+            Method: get          

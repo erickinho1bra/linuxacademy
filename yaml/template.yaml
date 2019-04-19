@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Resources:
+  MyFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: newAge.ageTeller
+      Runtime: python3.6
+      #CodeUri: s3://blue-pigeons/myProjects/python/newMailReader.zip
+      CodeUri: s3://blue-pigeons/myProjects/python/zip/newAge.zip
+      #Events:
+      #  Stream:
+      #    Type: DynamoDB
+      #    Properties:
+      #      Stream: !GetAtt DynamoDBTable.StreamARN
+      #      BatchSize: 100
+      #      StartingPosition: TRIM_HORIZON
+      Events:
+        HttpPost:
+          Type: Api
+          Properties:
+            Path: '/age'
+            Method: get
+
+
+  Alerts:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
